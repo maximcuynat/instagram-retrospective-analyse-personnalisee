@@ -1,5 +1,7 @@
 # Instagram data (private!)
 your_instagram_activity/
+connections/
+media/
 *.json
 
 # Generated images
@@ -49,4 +51,3 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
-/media
