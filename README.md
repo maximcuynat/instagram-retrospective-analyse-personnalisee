@@ -57,11 +57,24 @@ pip install -r requirements.txt
 
 ```
 📁 Votre dossier de travail/
-├── instagram_analysis_period.ipynb  ← Le notebook
-├── requirements.txt
-└── your_instagram_activity/         ← Dossier extrait d'Instagram
+├── instagram_analysis_clean.ipynb   ← Le notebook principal
+├── requirements.txt                 ← Dépendances Python
+├── connections/                     ← Données de connexions (extrait Instagram)
+│   ├── contacts/
+│   └── followers_and_following/
+├── media/                           ← Médias publiés (extrait Instagram)
+│   ├── archived_posts/              ← Posts archivés (organisés par date YYYYMM)
+│   ├── posts/                       ← Vos posts (par mois: 202401, 202402, etc.)
+│   ├── reels/                       ← Vos reels (par mois: 202401, 202402, etc.)
+│   ├── stories/                     ← Vos stories (par mois: 202401, 202402, etc.)
+│   ├── profile/                     ← Photos de profil
+│   ├── recently_deleted/            ← Contenus supprimés récemment
+│   └── other/                       ← Autres médias
+└── your_instagram_activity/         ← Activités Instagram (extrait Instagram)
     ├── messages/
-    │   └── inbox/                   ← Vos conversations
+    │   ├── inbox/                   ← Vos conversations
+    │   ├── broadcast/               ← Chaînes de diffusion
+    │   └── message_requests/        ← Demandes de messages
     ├── likes/                       ← Vos likes
     │   ├── liked_posts.json
     │   └── liked_comments.json
@@ -75,10 +88,12 @@ pip install -r requirements.txt
     │   ├── saved_locations.json
     │   └── saved_music.json
     ├── media/
-    │   └── stories.json            ← Vos stories
+    │   └── stories.json             ← Métadonnées de vos stories
     └── story_interactions/
-        └── story_likes.json        ← Likes sur stories
+        └── story_likes.json         ← Likes sur stories
 ```
+
+> **Note sur l'organisation des médias** : Les dossiers `posts/`, `reels/`, `stories/` dans `media/` contiennent des sous-dossiers organisés par date au format **YYYYMM** (ex: `202401` pour janvier 2024, `202512` pour décembre 2025). Instagram organise automatiquement vos médias par mois lors de l'export.
 
 ### Étape 3 : Configurer l'analyse
 
@@ -99,7 +114,7 @@ YEAR_FILTER = 2025  # Analyser toute l'année 2025
 jupyter notebook
 ```
 
-2. Ouvrez `instagram_analysis_period.ipynb`
+2. Ouvrez `instagram_analysis_clean.ipynb`
 
 3. Exécutez toutes les cellules dans l'ordre : **Cell** → **Run All**
 
@@ -171,18 +186,20 @@ YEAR_FILTER = None
 
 ## 📊 Graphiques générés
 
-| Fichier | Contenu |
-|---------|---------|
-| `top5_evolution_mensuelle.png` | Évolution mois par mois de vos 5 conversations principales |
-| `messages_stats.png` | Top 10 conversations, répartition, activité horaire et par jour |
-| `reactions_stats.png` | Répartition réactions et top emojis donnés/reçus |
-| `medias_overview.png` | Répartition médias (audio/photos/vidéos/GIFs) et distributions horaires |
-| `medias_top_conversations.png` | Top 8 conversations pour chaque type de média |
-| `medias_evolution_mensuelle.png` | Évolution mensuelle des médias (audio, photos, vidéos) |
-| `interactions_overview.png` | Répartition des likes et commentaires avec distributions horaires |
-| `interactions_evolution.png` | Évolution mensuelle des interactions (likes, commentaires, sauvegardes) |
-| `saved_content.png` | Répartition des contenus sauvegardés (posts, collections, lieux, musiques) |
-| `stories_posted.png` | Stories publiées par mois |
+Après l'exécution du notebook, **tous les graphiques sont sauvegardés automatiquement** à la racine du projet en haute qualité (150 DPI).
+
+| Fichier | Contenu | Section |
+|---------|---------|---------|
+| `top5_evolution_mensuelle.png` | Évolution mois par mois de vos 5 conversations principales | Messages |
+| `messages_stats.png` | Top 10 conversations, répartition, activité horaire et par jour | Messages |
+| `reactions_stats.png` | Répartition réactions et top emojis donnés/reçus | Réactions |
+| `medias_overview.png` | Répartition médias (audio/photos/vidéos/GIFs) et distributions horaires | Médias |
+| `medias_top_conversations.png` | Top 8 conversations pour chaque type de média | Médias |
+| `medias_evolution_mensuelle.png` | Évolution mensuelle des médias (audio, photos, vidéos) | Médias |
+| `interactions_overview.png` | Répartition des likes et commentaires avec distributions horaires | Interactions |
+| `interactions_evolution.png` | Évolution mensuelle des interactions (likes, commentaires, sauvegardes) | Interactions |
+| `saved_content.png` | Répartition des contenus sauvegardés (posts, collections, lieux, musiques) | Sauvegardés |
+| `stories_posted.png` | Stories publiées par mois | Stories |
 
 ## 🎯 Exemples de visualisations
 
@@ -262,23 +279,17 @@ YEAR_FILTER = None
 ## 📁 Structure du projet
 
 ```
-instagram-retrospective/
+instagram-retrospective-analyse-personnalisee/
 ├── README.md                          ← Ce fichier
-├── instagram_analysis_period.ipynb    ← Notebook principal
-├── requirements.txt                   ← Dépendances Python
-├── .gitignore                         ← Fichiers à ignorer
-└── examples/                          ← Exemples de graphiques
-    ├── top5_evolution_mensuelle.png
-    ├── messages_stats.png
-    ├── reactions_stats.png
-    ├── medias_overview.png
-    ├── medias_top_conversations.png
-    ├── medias_evolution_mensuelle.png
-    ├── interactions_overview.png
-    ├── interactions_evolution.png
-    ├── saved_content.png
-    └── stories_posted.png
+├── instagram_analysis_clean.ipynb     ← Notebook principal d'analyse
+├── Requirements.txt                   ← Dépendances Python
+├── .gitignore                         ← Fichiers à ignorer (données personnelles)
+├── connections/                       ← Données de connexions Instagram (gitignored)
+├── media/                             ← Vos médias publiés (gitignored)
+└── your_instagram_activity/           ← Vos données d'activité (gitignored)
 ```
+
+> **Note** : Les dossiers contenant vos données personnelles (`connections/`, `media/`, `your_instagram_activity/`) ne sont pas versionés dans Git pour protéger votre vie privée. Après avoir exécuté le notebook, les graphiques générés seront sauvegardés à la racine du projet.
 
 ## 🔒 Confidentialité et sécurité
 
