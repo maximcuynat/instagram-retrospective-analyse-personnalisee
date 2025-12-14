@@ -12,7 +12,10 @@ Analysez vos conversations Instagram et créez de magnifiques graphiques pour vo
 - **Messages** : Top conversations, répartition envoyés/reçus, activité horaire et par jour
 - **Évolution temporelle** : Graphiques mensuels du top 5 de vos conversations
 - **Réactions** : Emojis les plus utilisés, top reacteurs
-- **Médias** : Audio, photos, vidéos (avec durées estimées)
+- **Médias** : Audio, photos, vidéos, GIFs, reels (avec durées estimées)
+- **Interactions** : Likes (posts, commentaires, stories), commentaires publiés
+- **Contenus sauvegardés** : Posts, collections, lieux, musiques
+- **Stories** : Stories publiées, évolution mensuelle
 - **Période personnalisable** : Analysez n'importe quelle période (année, mois, custom)
 
 ### 🎨 Graphiques professionnels
@@ -57,13 +60,24 @@ pip install -r requirements.txt
 ├── instagram_analysis_period.ipynb  ← Le notebook
 ├── requirements.txt
 └── your_instagram_activity/         ← Dossier extrait d'Instagram
-    └── messages/
-        └── inbox/                   ← Vos conversations
-            ├── conversation1/
-            │   └── message_1.json
-            ├── conversation2/
-            │   └── message_1.json
-            └── ...
+    ├── messages/
+    │   └── inbox/                   ← Vos conversations
+    ├── likes/                       ← Vos likes
+    │   ├── liked_posts.json
+    │   └── liked_comments.json
+    ├── comments/                    ← Vos commentaires
+    │   ├── post_comments_1.json
+    │   ├── reels_comments.json
+    │   └── hype.json
+    ├── saved/                       ← Contenus sauvegardés
+    │   ├── saved_posts.json
+    │   ├── saved_collections.json
+    │   ├── saved_locations.json
+    │   └── saved_music.json
+    ├── media/
+    │   └── stories.json            ← Vos stories
+    └── story_interactions/
+        └── story_likes.json        ← Likes sur stories
 ```
 
 ### Étape 3 : Configurer l'analyse
@@ -93,6 +107,46 @@ jupyter notebook
 
 5. Vos graphiques sont générés ! 🎉
 
+## 📈 Statistiques détaillées disponibles
+
+Le notebook génère des statistiques complètes sur :
+
+### 💬 Messages
+- Total messages envoyés/reçus
+- Moyenne de caractères par message
+- Distribution horaire (pic d'activité)
+- Distribution par jour de la semaine
+- Évolution mensuelle
+- Top 10 conversations
+
+### ❤️ Réactions
+- Réactions données/reçues
+- Top 10 emojis utilisés
+- Top reacteurs (qui réagit le plus)
+
+### 🎙️ Médias
+- **Audio** : nombre, durée totale, durée moyenne
+- **Photos** : nombre total, répartition envoyées/reçues
+- **Vidéos** : nombre, durée totale, durée moyenne
+- **GIFs** : nombre total
+- **Partages** : posts/reels/stories partagés
+
+### 👍 Interactions
+- **Likes** : posts (X), commentaires (Y), stories (Z)
+- **Commentaires** : stories, posts, reels
+- Top 5 comptes les plus likés
+- Top 5 comptes les plus commentés
+
+### 💾 Contenus Sauvegardés
+- Posts sauvegardés
+- Collections créées
+- Lieux enregistrés
+- Musiques sauvegardées
+
+### 📱 Stories
+- Nombre de stories publiées
+- Évolution mensuelle
+
 ## ⚙️ Configuration avancée
 
 ### Analyser une période spécifique
@@ -120,24 +174,52 @@ YEAR_FILTER = None
 | Fichier | Contenu |
 |---------|---------|
 | `top5_evolution_mensuelle.png` | Évolution mois par mois de vos 5 conversations principales |
-| `messages_stats.png` | Top 10, répartition, activité horaire et par jour |
-| `reactions_stats.png` | Répartition réactions et top emojis |
+| `messages_stats.png` | Top 10 conversations, répartition, activité horaire et par jour |
+| `reactions_stats.png` | Répartition réactions et top emojis donnés/reçus |
+| `medias_overview.png` | Répartition médias (audio/photos/vidéos/GIFs) et distributions horaires |
+| `medias_top_conversations.png` | Top 8 conversations pour chaque type de média |
+| `medias_evolution_mensuelle.png` | Évolution mensuelle des médias (audio, photos, vidéos) |
+| `interactions_overview.png` | Répartition des likes et commentaires avec distributions horaires |
+| `interactions_evolution.png` | Évolution mensuelle des interactions (likes, commentaires, sauvegardes) |
+| `saved_content.png` | Répartition des contenus sauvegardés (posts, collections, lieux, musiques) |
+| `stories_posted.png` | Stories publiées par mois |
 
 ## 🎯 Exemples de visualisations
 
-### Messages
+### 💬 Messages
 - **Top 10 conversations** avec nombre de messages
 - **Pie chart** envoyés vs reçus
 - **Courbe d'activité** par heure (avec pic marqué)
 - **Bar chart** par jour de la semaine
+- **Évolution mensuelle** du top 5
 
-### Évolution
-- **Graphique multi-lignes** montrant l'évolution de vos 5 principales conversations
-- **Annotations automatiques** sur les pics d'activité
-
-### Réactions
+### ❤️ Réactions
 - **Top emojis** donnés et reçus (avec vrais emojis !)
 - **Pie chart** répartition réactions
+- **Top reacteurs** (qui réagit le plus à vos messages)
+
+### 🎙️ Médias
+- **Vue d'ensemble** : répartition audio/photos/vidéos/GIFs
+- **Comparaison** envoyés vs reçus pour chaque type
+- **Top 8 conversations** par type de média
+- **Distributions horaires** : quand vous envoyez le plus d'audios, photos, etc.
+- **Évolution mensuelle** : courbes comparatives des différents médias
+- **Durées estimées** pour audio et vidéos
+
+### 👍 Interactions
+- **Likes** : posts, commentaires, stories
+- **Commentaires** : stories, posts, reels
+- **Top comptes** : les plus likés et commentés
+- **Distributions horaires** : vos heures d'activité
+- **Évolution mensuelle** : likes, commentaires, sauvegardes
+
+### 💾 Contenus Sauvegardés
+- **Répartition** : posts, collections, lieux, musiques
+- **Évolution temporelle** de vos sauvegardes
+
+### 📱 Stories
+- **Stories publiées** par mois
+- **Volume total** sur la période
 
 ## 🛠️ Dépannage
 
@@ -163,6 +245,20 @@ YEAR_FILTER = None
 
 ✅ L'analyse complète peut prendre 2-5 minutes
 
+✅ Les fichiers audio/vidéo doivent être présents pour les estimations de durée
+
+### "Certains graphiques sont vides"
+✅ C'est normal si vous n'avez pas ce type de données (ex: pas de GIFs, pas de commentaires)
+
+✅ Le notebook gère automatiquement les données manquantes
+
+✅ Vérifiez que tous les dossiers (likes, comments, saved, etc.) sont bien présents
+
+### "FileNotFoundError"
+✅ Assurez-vous que tous les fichiers médias référencés dans les JSON sont présents
+
+✅ Si vous avez déplacé/supprimé des fichiers médias, les durées ne pourront pas être calculées (mais l'analyse continue)
+
 ## 📁 Structure du projet
 
 ```
@@ -174,7 +270,14 @@ instagram-retrospective/
 └── examples/                          ← Exemples de graphiques
     ├── top5_evolution_mensuelle.png
     ├── messages_stats.png
-    └── reactions_stats.png
+    ├── reactions_stats.png
+    ├── medias_overview.png
+    ├── medias_top_conversations.png
+    ├── medias_evolution_mensuelle.png
+    ├── interactions_overview.png
+    ├── interactions_evolution.png
+    ├── saved_content.png
+    └── stories_posted.png
 ```
 
 ## 🔒 Confidentialité et sécurité
@@ -196,15 +299,22 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 
 ## 📝 TODO / Idées futures
 
+- [x] Analyse des médias (audio, photos, vidéos, GIFs)
+- [x] Analyse des interactions (likes, commentaires)
+- [x] Contenus sauvegardés (posts, collections, lieux, musiques)
+- [x] Stories publiées
+- [x] Période personnalisable
 - [ ] Export PDF multi-pages avec tous les graphiques
 - [ ] Graphiques interactifs (Plotly)
 - [ ] Analyse de sentiments des messages
 - [ ] Wordcloud des mots les plus utilisés
-- [ ] Heatmap jour/heure d'activité
-- [ ] Temps de réponse moyen
+- [ ] Heatmap jour/heure d'activité complète
+- [ ] Temps de réponse moyen dans les conversations
 - [ ] Interface web (Flask/Streamlit)
-- [ ] Support des stories Instagram
 - [ ] Comparaison année N vs année N-1
+- [ ] Analyse des hashtags utilisés
+- [ ] Détection des conversations les plus actives par période
+- [ ] Export des statistiques en JSON/CSV
 
 ## 📜 Licence
 
