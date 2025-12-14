@@ -4,10 +4,11 @@ connections/
 media/
 *.json
 
-# Generated images
+# Generated files
 *.png
 *.jpg
 *.jpeg
+*.csv
 
 # Jupyter
 .ipynb_checkpoints/
