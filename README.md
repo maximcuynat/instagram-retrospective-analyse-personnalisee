@@ -16,6 +16,9 @@ Analysez vos conversations Instagram et créez de magnifiques graphiques pour vo
 - **Interactions** : Likes (posts, commentaires, stories), commentaires publiés
 - **Contenus sauvegardés** : Posts, collections, lieux, musiques
 - **Stories** : Stories publiées, évolution mensuelle
+- **Wordcloud** : Nuage de mots de vos messages les plus fréquents
+- **Heatmap** : Carte de chaleur jour/heure de votre activité
+- **Export données** : Statistiques exportées en JSON et CSV
 - **Période personnalisable** : Analysez n'importe quelle période (année, mois, custom)
 
 ### 🎨 Graphiques professionnels
@@ -33,10 +36,10 @@ Analysez vos conversations Instagram et créez de magnifiques graphiques pour vo
 ### Installation des dépendances
 
 ```bash
-pip install jupyter matplotlib seaborn numpy
+pip install jupyter matplotlib seaborn numpy wordcloud pandas
 ```
 
-Ou avec le fichier requirements.txt :
+Ou avec le fichier Requirements.txt :
 
 ```bash
 pip install -r requirements.txt
@@ -190,16 +193,27 @@ Après l'exécution du notebook, **tous les graphiques sont sauvegardés automat
 
 | Fichier | Contenu | Section |
 |---------|---------|---------|
+| **Graphiques Messages** | | |
 | `top5_evolution_mensuelle.png` | Évolution mois par mois de vos 5 conversations principales | Messages |
 | `messages_stats.png` | Top 10 conversations, répartition, activité horaire et par jour | Messages |
+| **Graphiques Réactions** | | |
 | `reactions_stats.png` | Répartition réactions et top emojis donnés/reçus | Réactions |
+| **Graphiques Médias** | | |
 | `medias_overview.png` | Répartition médias (audio/photos/vidéos/GIFs) et distributions horaires | Médias |
 | `medias_top_conversations.png` | Top 8 conversations pour chaque type de média | Médias |
 | `medias_evolution_mensuelle.png` | Évolution mensuelle des médias (audio, photos, vidéos) | Médias |
+| **Graphiques Interactions** | | |
 | `interactions_overview.png` | Répartition des likes et commentaires avec distributions horaires | Interactions |
 | `interactions_evolution.png` | Évolution mensuelle des interactions (likes, commentaires, sauvegardes) | Interactions |
 | `saved_content.png` | Répartition des contenus sauvegardés (posts, collections, lieux, musiques) | Sauvegardés |
 | `stories_posted.png` | Stories publiées par mois | Stories |
+| **Analyses Avancées** | | |
+| `wordcloud.png` | Nuage de mots des termes les plus utilisés dans vos messages | Wordcloud |
+| `heatmap_activity.png` | Carte de chaleur jour/heure de votre activité de messagerie | Heatmap |
+| **Exports de Données** | | |
+| `instagram_stats_*.json` | Toutes les statistiques complètes en format JSON | Export |
+| `instagram_summary_*.csv` | Résumé global des statistiques en CSV | Export |
+| `instagram_top_conversations_*.csv` | Top 20 conversations détaillées en CSV | Export |
 
 ## 🎯 Exemples de visualisations
 
@@ -237,6 +251,24 @@ Après l'exécution du notebook, **tous les graphiques sont sauvegardés automat
 ### 📱 Stories
 - **Stories publiées** par mois
 - **Volume total** sur la période
+
+### ☁️ Wordcloud
+- **Nuage de mots** des termes les plus utilisés dans vos messages
+- **Top 20 mots** les plus fréquents avec compteurs
+- **Filtrage intelligent** des mots vides (le, la, de, etc.)
+- **Design coloré** facile à partager
+
+### 🔥 Heatmap
+- **Carte de chaleur** jour/heure de votre activité
+- **Visualisation intuitive** de vos heures de pics
+- **Identification** des jours et heures les plus actifs
+- **Annotations** avec nombre de messages par cellule
+
+### 💾 Export de Données
+- **Export JSON** : toutes les statistiques complètes structurées
+- **Export CSV résumé** : vue d'ensemble avec métriques principales
+- **Export CSV conversations** : top 20 conversations avec détails
+- **Format prêt** pour analyse externe (Excel, Power BI, etc.)
 
 ## 🛠️ Dépannage
 
@@ -315,17 +347,17 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 - [x] Contenus sauvegardés (posts, collections, lieux, musiques)
 - [x] Stories publiées
 - [x] Période personnalisable
+- [x] **Wordcloud des mots les plus utilisés**
+- [x] **Heatmap jour/heure d'activité complète**
+- [x] **Export des statistiques en JSON/CSV**
 - [ ] Export PDF multi-pages avec tous les graphiques
 - [ ] Graphiques interactifs (Plotly)
 - [ ] Analyse de sentiments des messages
-- [ ] Wordcloud des mots les plus utilisés
-- [ ] Heatmap jour/heure d'activité complète
 - [ ] Temps de réponse moyen dans les conversations
 - [ ] Interface web (Flask/Streamlit)
 - [ ] Comparaison année N vs année N-1
 - [ ] Analyse des hashtags utilisés
 - [ ] Détection des conversations les plus actives par période
-- [ ] Export des statistiques en JSON/CSV
 
 ## 📜 Licence
 
